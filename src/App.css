@@ -99,6 +99,7 @@ main {
   max-width: 500px;
 }
 
+/* ! Default style for hamburger btn is none. we change it to inline-block in the media setting below in order for it to show */
 #nav-btn {
   display: none;
   background-color: black;
@@ -110,3 +111,158 @@ main {
 
 
 
+/* Done with class */
+
+/* !screen and width is best practice, screen and width is mainly used for specifying screen use  */
+@media screen and (max-width: 1100px){
+  .nav-bar{
+    height: 100vh;
+    width: 300px;
+    min-width: 300px;
+    background-color: #000;
+
+    /* ! specifies the positioning since media query can push items off screen */
+
+    position: fixed;
+    right: 0;
+    top: 80px;
+
+    /* ! btn functionality so nav bar doesnt obstruct site view, getting sent off screen to the right 300px since thats the menu width and DOES NOT DELETE just pushes it out of view */
+
+    /* * in order to have a left side menu, we'd change the right property above to left: 0; then change tranlate below to translate(-300px, 0) so it pulls off the screen to the left */
+
+    transform: translate(300px, 0);
+
+/* * transition speed (anything over .5s seems really slow */
+
+    transition: .5s;
+
+    /* * linear is consistant speed throughout */
+    /* *ease-in-out is start AND end slower */
+
+    transition-timing-function: linear;
+  }
+
+  /* ! makes the menu go back to showing by applying the created class to the menu in Header.js so it fires the functions because of the toggleShowFunc and stte in App.js */
+
+  .show{
+
+    /* * first number inside () is x-axis, second is y-axis */
+
+    transform: translate(0,0);
+  }
+
+  .nav-bar ul{
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    position: absolute;
+    top: 30px;
+  }
+
+  #nav-btn{
+    /* ! creates hamburger btn to click for the menu */
+    display: inline-block;
+  }
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 700px){
+  #voltron{
+    /* ! makes voltron id show at screens 700px or less */
+    display: block;
+
+    /* ! animation calls time of fade and the @keyframe name in that order */
+    animation: 4s fade-in;
+  }
+
+  /* !adds styling for each individual img that are already there with zoom animation below specified in @keyframes */
+
+  .black{
+    animation: zoom-black 3s ease-out;
+    /* ! used so the fill wont reset after animation completes */
+    animation-fill-mode: forwards;
+  }
+
+  .red{
+    animation: zoom-red 3s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  .blue{
+    animation: zoom-blue 3s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  .green{
+    animation: zoom-green 3s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  .yellow{
+    animation: zoom-yellow 3s ease-out;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes fade-in{
+  from{
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom-black{
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(150px, 150px);
+  }
+}
+@keyframes zoom-red{
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(-150px, 150px);
+  }
+}
+@keyframes zoom-blue{
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(150px, -150px);
+  }
+}
+
+@keyframes zoom-yellow{
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(-150px, -150px);
+  }
+}
+@keyframes zoom-green{
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(0px, -300px);
+  }
+}

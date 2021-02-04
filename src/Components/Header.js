@@ -8,7 +8,7 @@ class Header extends Component {
             toggleShow: false
         }
     }
-
+// ! toggles .show in css
     toggleShowFunc = () => {
         this.setState( (prevState) => {
             return {
